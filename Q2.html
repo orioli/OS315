@@ -45,44 +45,54 @@
         
 <flowise-fullchatbot></flowise-fullchatbot>
 <script type="module">
-    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
-    Chatbot.initFull({
-        chatflowid: "cfb934b0-fc6c-47ae-ba7c-16382a26d5f6",
-        apiHost: "https://d2-qm90.onrender.com",
-        theme: {
-            chatWindow: {
-                welcomeMessage: "to start type start",
-                backgroundColor: "#ffffff",
-                height: 700,
-                width: 400,
-                fontSize: 16,
-                poweredByTextColor: "#303235",
-                botMessage: {
-                    backgroundColor: "#f7f8ff",
-                    textColor: "#303235",
-                    showAvatar: true,
-                    // avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
-                    avatarSrc: "./teal.png",
-                
-                },
-                userMessage: {
-                    backgroundColor: "#3B81F6",
-                    textColor: "#ffffff",
-                    showAvatar: true,
-                    avatarSrc: "./avatar3.png",
-                },
-                textInput: {
-                    placeholder: "Type your question",
+   import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const chatflowIds = [
+            "cfb934b0-fc6c-47ae-ba7c-16382a26d5f6", // First chatflow ID
+            "cfb934b0-fc6c-47ae-ba7c-XXXXX" // Second chatflow ID
+        ];
+
+        const selectedChatflowId = chatflowIds[Math.floor(Math.random() * chatflowIds.length)];
+
+        Chatbot.initFull({
+            chatflowid: selectedChatflowId,
+            apiHost: "https://d2-qm90.onrender.com",
+            theme: {
+                chatWindow: {
+                    welcomeMessage: "to start type start",
                     backgroundColor: "#ffffff",
-                    textColor: "#303235",
-                    sendButtonColor: "#3B81F6",
-                }
+                    height: 700,
+                    width: 400,
+                    fontSize: 16,
+                    poweredByTextColor: "#303235",
+                    botMessage: {
+                        backgroundColor: "#f7f8ff",
+                        textColor: "#303235",
+                        showAvatar: true,
+                        // avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                        avatarSrc: "./teal.png",
+                    
+                    },
+                    userMessage: {
+                        backgroundColor: "#3B81F6",
+                        textColor: "#ffffff",
+                        showAvatar: true,
+                        avatarSrc: "./avatar3.png",
+                    },
+                    textInput: {
+                        placeholder: "Type your question",
+                        backgroundColor: "#ffffff",
+                        textColor: "#303235",
+                        sendButtonColor: "#3B81F6",
+                    }
+                }           
             }
-        }
-    })
+        });
+    });
+    
 </script>
 
-    
     </div>
 
     <!-- Bottom text -->
