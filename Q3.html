@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>OS315 tutor</title>
+    <style>
+        @media screen and (max-width: 768px) {
+        .chatbot-container {
+                width: 100%; /* Make the chatbot container full width */
+                margin: 0;
+                padding: 0;
+            }
+        
+            .bottom-text {
+                font-size: 18px; /* Increase font size for better readability */
+            }
+        
+            /* Additional styles for chatbot theming can be added here */
+            /* For example, increasing the font size within the chat window */
+            /* This depends on the specific chatbot implementation */
+        }
+
+        /* Center the chatbot container */
+        .chatbot-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh; /* Adjust height as needed */
+        }
+
+        /* Style for the bottom text */
+        .bottom-text {
+            text-align: center;
+            margin-top: 20px;
+            font-family: Calibri, sans-serif; /* Use Calibri font */
+            color: rgba(0, 0, 0, 0.5); /* Black text with 50% opacity */
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="chatbot-container">
+        
+<flowise-fullchatbot></flowise-fullchatbot>
+<script type="module">
+    import Chatbot from "https://cdn.jsdelivr.net/npm/flowise-embed/dist/web.js"
+    Chatbot.initFull({
+        chatflowid: "b4d2cf94-b32c-4e93-8bbd-04981238ce94",
+        apiHost: "https://d2-qm90.onrender.com",
+        theme: {
+            chatWindow: {
+                welcomeMessage: "to start type start",
+                backgroundColor: "#ffffff",
+                height: 700,
+                width: 400,
+                fontSize: 16,
+                poweredByTextColor: "#303235",
+                botMessage: {
+                    backgroundColor: "#f7f8ff",
+                    textColor: "#303235",
+                    showAvatar: true,
+                    // avatarSrc: "https://raw.githubusercontent.com/zahidkhawaja/langchain-chat-nextjs/main/public/parroticon.png",
+                    avatarSrc: "./teal.png",
+                
+                },
+                userMessage: {
+                    backgroundColor: "#3B81F6",
+                    textColor: "#ffffff",
+                    showAvatar: true,
+                    avatarSrc: "./avatar3.png",
+                },
+                textInput: {
+                    placeholder: "Type start",
+                    backgroundColor: "#ffffff",
+                    textColor: "#303235",
+                    sendButtonColor: "#3B81F6",
+                }
+            }
+        }
+    })
+</script>
+
+    
+    </div>
+
+    <!-- Bottom text -->
+</body>
+</html>
