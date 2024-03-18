@@ -1,6 +1,6 @@
 # OS315 chatbot
 
-Q1	
+## Q1	
 - Url: 	urla +/Q1.html
 - GTP: 	urlb +/g-NRNKFMJR4-os315 c
 - Prompt: see Fig 1
@@ -8,7 +8,7 @@ Q1
 - Dates: Feb 2-5
 
 
-Q2
+## Q2
 - Url: 	urla +/Q2.html
 - GTP:
 - urlb +/g-tWCOReUO6-os315q2plain
