@@ -1,0 +1,599 @@
+ 
+ITBP 315 – Operating Systems Fundamentals
+Lab 4 – Text Manipulation Command
+Objective: Practice common UNIX commands.
+
+Procedure:
+
+less
+ 
+The command ‘less’ writes the contents of a file onto the screen a page at a time. 
+
+Task:
+1.	Copy the ‘zmore’ from /bin
+
+$ less zmore 
+
+Press the [space-bar] if you want to see another page, type [q] if you want to quit reading. As you can see, less is used in preference to cat for long files.
+
+2.	Quit by typing ‘q’
+head
+ 
+The head command writes the first ten lines of a file to the screen. 
+
+Task:
+1.	Practice the ‘head’ command with zmore file
+
+tail
+ 
+The tail command writes the last ten lines of a file to the screen.
+
+Task:
+1.	Practice the ‘tail’ command with zmore file
+
+Simple searching using less
+ 
+Task:
+Using less, you can search though a text file for a keyword (pattern). For example, to search through zmore for the word 'fi', type 
+
+$ less zmore 
+
+then, still in less (i.e. don't press [q] to quit), type a forward slash [/] followed by the word to search
+ 
+/fi
+ 
+As you can see, less finds and highlights the keyword. Type [n] to search for the next occurrence of the word.
+
+
+grep
+ 
+Task:
+grep is one of many standard UNIX utilities. It searches files for specified words or patterns. First clear the screen, then type 
+
+$ grep Fi zmore   
+
+As you can see, grep has printed out each line containing the word fi. 
+
+
+What did you see ?
+
+
+Now, Try this command:
+
+$ grep fi zmore
+
+What you observe? 
+
+The grep command is case sensitive; it distinguishes between Science and science. 
+
+To ignore upper/lower case distinctions, use the -i option, i.e. type 
+
+$ grep -i fi zmore
+
+To search for a phrase or pattern, you must enclose it in single quotes (the apostrophe symbol). For example, type 
+
+$ grep -i  ‘uncompressed contents’ zmore
+
+Some of the other options of grep are: 
+
+-v display those lines that do NOT match 
+-n precede each matching line with the line number 
+-c print only the total count of matched lines 
+
+
+Try some of them and see the different results. Don't forget, you can use more than one option at a time, for example, the number of lines without the words fi or Fi is
+ 
+$ grep -ivc fi zmore
+
+wc (word count)
+ 
+A handy little utility is the wc command, short for word count. To do a word count on zmore, type 
+
+$ wc -w zmore 
+
+To find out how many lines the file has, type 
+
+$ wc -l zmore
+
+To find out how many characters the file has, type
+$ wc -m zmore
+
+
+Redirection   
+
+Task:
+Most processes initiated by UNIX commands write to the standard output (that is, they write to the terminal screen), and many take their input from the standard input (that is, they read it from the keyboard). There is also the standard error, where processes write their error messages, by default, to the terminal screen. 
+
+We have already seen one use of the cat command to write the contents of a file to the screen. 
+
+Now type cat without specifying a file to read 
+
+$ cat
+ 
+Then type a few words on the keyboard and press the [Return] key. 
+
+Finally hold the [Ctrl] key down and press [d] (written as ^D for short) to end the input. 
+
+What has happened? 
+
+If you run the cat command without specifying a file to read, it reads the standard input (the keyboard), and on receiving the 'end of file' (^D), copies it to the standard output (the screen). 
+
+In UNIX, we can redirect both the input and the output of commands.
+
+
+Redirecting the Output   
+
+Task:
+We use the > symbol to redirect the output of a command. For example, to create a file called list1 containing a list of fruit, type   
+
+$ cat > list1
+ 
+Then type in the names of some fruit. Press [Return] after each one. 
+
+pear
+banana
+ apple
+ ^D (Control D to stop)
+ 
+What happens is the cat command reads the standard input (the keyboard) and the > redirects the output, which normally goes to the screen, into a file called list1 
+
+To read the contents of the file, type 
+
+$ cat list1
+
+Exercise
+
+Using the above method, create another file called list2 containing the following fruit: orange, plum, mango, grapefruit. Read the contents of list2
+
+The form >> appends standard output to a file. So to add more items to the file list1, type 
+
+$ cat >> list1
+ 
+Then type in the names of more fruit 
+
+peach
+ grape
+ orange
+ ^D (Control D to stop)
+ 
+To read the contents of the file, type 
+
+$ cat list1
+
+You should now have two files. One contains six fruit, the other contains four fruit. We will now use the cat command to join (concatenate) list1 and list2 into a new file called biglist. Type 
+
+$ cat list1 list2 > biglist
+ 
+What this is doing is reading the contents of list1 and list2 in turn, then outputing the text to the file biglist 
+
+To read the contents of the new file, type 
+
+$ cat biglist
+
+
+Redirecting the Input   
+
+Task:
+We use the < symbol to redirect the input of a command. 
+
+The command sort alphabetically or numerically sorts a list. Type 
+
+$ sort 
+
+Then type in the names of some vegetables. Press [Return] after each one. 
+
+carrot
+beetroot
+artichoke
+ ^D (control d to stop)
+ 
+
+The output will be 
+
+artichoke
+beetroot 
+carrot 
+
+Using < you can redirect the input to come from a file rather than the keyboard. For example, to sort the list of fruit, type 
+
+$ sort < biglist 
+
+and the sorted list will be output to the screen. 
+
+To output the sorted list to a file, type, 
+
+$ sort < biglist > slist 
+
+Use cat to read the contents of the file slist
+
+Summary
+more file	display a file a page at a time
+head file	display the first few lines of a file
+tail file	display the last few lines of a file
+grep 'keyword' file	search a file for keywords
+wc file	count number of lines/words/characters in file
+Input/Output Redirection	
+
+
+
+ 
+ITBP 315 – Operating Systems Fundamentals
+Lab 5 – Process Management
+Objective:
+Practice common UNIX commands.
+
+Procedure:
+
+Wildcards
+ 
+Type 
+
+$ ls *list
+ 
+This will list all files in the current directory ending with ....list
+ 
+The character ? will match exactly one character.
+ So ls ?ouse will match files like house and mouse, but not grouse. 
+Try typing 
+
+$ ls ?list
+
+Filename conventions 
+$ cat > a.c
+$ cat > b.c
+$ cat > c.c
+A directory is merely a special type of file. So the rules and conventions for naming files apply also to directories. 
+
+In naming files, characters with special meanings such as / * & $ , should be avoided. Also, avoid using spaces within names. The safest way to name a file is to use only alphanumeric characters, that is, letters and numbers, together with _ (underscore) and . (dot). 
+
+For example, all files consisting of C code may be named with the ending .c, for example, prog1.c . Then in order to list all files containing C code in your home directory, you need only type ls *.c in that directory.
+
+
+
+On-line Manuals
+ 
+There are on-line manuals which gives information about most commands. The manual pages tell you which options a particular command can take, and how each option modifies the behaviour of the command. Type man command to read the manual page for a particular command. 
+
+For example, to find out more about the wc (word count) command, type 
+
+$ man wc 
+
+Alternatively 
+
+$ whatis wc 
+
+gives a one-line description of the command, but omits any information about options etc.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+File system security (access rights) 
+
+In your unixstuff directory, type 
+
+$ ls -l (l for long listing!)
+
+You will see that you now get lots of details about the contents of your directory, similar to the example below.
+
+Changing access rights
+ 
+chmod (changing a file mode)
+ 
+Only the owner of a file can use chmod to change the permissions of a file. The options of chmod are as follows
+
+ 
+
+
+
+
+
+
+
+
+Symbol	Meaning
+u	user
+g	group
+o	other
+a	all
+r	read
+w	write (and delete)
+x	execute (and access directory) 
++	add permission
+-	take away permission
+
+
+
+
+
+For example, to remove read write and execute permissions on the file biglist for the group and others, type 
+
+$ chmod go-rwx biglist 
+
+This will leave the other permissions unaffected. 
+
+To give read and write permissions on the file biglist to all, 
+
+$ chmod a+rw biglist
+
+
+Processes and Jobs 
+
+A process is an executing program identified by a unique PID (process identifier). To see information about your processes, with their associated PID and status, type 
+
+$ ps 
+
+A process may be in the foreground, in the background, or be suspended. In general the shell does not return the UNIX prompt until the current process has finished executing. 
+
+Some processes take a long time to run and hold up the terminal. Backgrounding a long process has the effect that the UNIX prompt is returned immediately, and other tasks can be carried out while the original process continues executing.
+ 
+Running background processes
+ 
+To background a process, type an & at the end of the command line. For example, the command sleep waits a given number of seconds before continuing. Type 
+
+
+$ sleep 10 
+
+This will wait 10 seconds before returning the command prompt $. Until the command prompt is returned, you can do nothing except wait. 
+
+
+To run sleep in the background, type 
+
+$ sleep 10 &
+ 
+[1] 6259 
+
+The & runs the job in the background and returns the prompt straight away, allowing you do run other programs while waiting for that one to finish. 
+
+The first line in the above example is typed in by the user; the next line, indicating job number and PID, is returned by the machine. The user is be notified of a job number (numbered from 1) enclosed in square brackets, together with a PID and is notified when a background process is finished. Backgrounding is useful for jobs which will take a long time to complete.
+
+Backgrounding a current foreground process
+ 
+At the prompt, type 
+
+$ sleep 100 
+
+You can suspend the process running in the foreground by holding down the [control] key and typing [z] (written as ^Z) Then to put it in the background, type 
+
+$ bg 
+
+
+
+Listing suspended and background processes 
+
+When a process is running, backgrounded or suspended, it will be entered onto a list along with a job number. To examine this list, type 
+
+$ jobs 
+
+
+To restart (foreground) a suspended processes, type 
+
+$ fg $jobnumber 
+
+
+For example, to restart sleep 100, type 
+
+$ fg $1 
+
+Typing fg with no job number foregrounds the last suspended process
+
+Killing a process 
+
+kill (terminate or signal a process)
+ 
+It is sometimes necessary to kill a process (for example, when an executing program is in an infinite loop) 
+
+To kill a job running in the foreground, type ^C (control c). For example, run 
+
+$ sleep 100
+ ^C 
+
+To kill a suspended or background process, type 
+
+$ kill %jobnumber 
+
+For example, run 
+
+$ sleep 100 &
+ $ jobs
+ 
+If it is job number 4, type 
+
+$ kill %4 
+
+To check whether this has worked, examine the job list again to see if the process has been removed.
+
+ps (process status)
+ 
+Alternatively, processes can be killed by finding their process numbers (PIDs) and using kill PID_number
+ 
+$ sleep 100 &
+ $ ps
+ 
+PID 		TT S 		TIME 	COMMAND
+ 20077	 pts/5 		S 0:05 	sleep 100
+ 21563 	pts/5 		T 0:00 	netscape
+ 21873 	pts/5 		S 0:25	 nedit 
+
+To kill off the process sleep 100, type 
+
+$ kill 20077 
+
+and then type ps again to see if it has been removed from the list. 
+
+If a process refuses to be killed, uses the -9 option, i.e. type 
+
+$ kill -9 20077
+
+Note: It is not possible to kill off other users' processes!!!
+
+
+
+Summary
+*	match any number of characters
+?	match one character
+man command	read the online manual page for a command
+whatis command	brief description of a command
+
+ls -lag	list access rights for all files
+chmod [options] file	change access rights for named file
+command &	run command in background
+^C	kill the job running in the foreground
+^Z	suspend the job running in the foreground
+bg	background the suspended job
+jobs	list current jobs
+fg %1	foreground job number 1
+kill %1	kill job number 1
+ps	list current processes
+kill 26152	kill process number 26152
+
+
+How would you list files in the current directory sorted by file size?
+Answer: ls -lS
+
+To count the number of directories in the current directory, how would you combine ls, grep, and wc?
+Answer: ls -la | grep ^d | wc -l
+
+How can you display the last five commands from your command history?
+Answer: cat history | tail -5
+
+What command would you use to find all occurrences of the word 'network' in a file called 'report.txt', ignoring case sensitivity?
+Answer: grep -i 'network' report.txt
+
+How would you concatenate two text files, 'file1.txt' and 'file2.txt', into a new file 'combined.txt'?
+Answer: cat file1.txt file2.txt > combined.txt
+
+To count the number of words in a file 'document.txt', which command would you use?
+Answer: wc -w document.txt
+
+How can you display the first 15 lines of a file named 'data.txt'?
+Answer: head -15 data.txt
+
+What command would display the number of lines that do NOT contain the word 'error' in 'log.txt'?
+Answer: grep -ivc 'error' log.txt
+
+How do you find the number of characters in a file 'script.sh'?
+Answer: wc -m script.sh
+
+If you want to display the lines of 'notes.txt' in reverse order, which combination of commands would you use?
+Answer: tac notes.txt
+
+How would you display the third line of a file 'records.txt'?
+Answer: head -3 records.txt | tail -1
+
+To list all files in the current directory with a '.txt' extension and their line counts, which command would you use?
+Answer: wc -l *.txt
+
+How do you append the contents of 'file2.txt' to 'file1.txt'?
+Answer: cat file2.txt >> file1.txt
+
+If you need to display the last 20 lines of a file named 'log.txt', which command would you use?
+Answer: tail -20 log.txt
+
+How would you display all files in the current directory that do not contain the word 'temp'?
+Answer: grep -v 'temp' *
+
+To display the contents of a file named 'data.txt' with line numbers, which command would you use?
+Answer: cat -n data.txt
+
+How can you count the number of unique lines in a file 'list.txt'?
+Answer: sort list.txt | uniq | wc -l
+
+If you want to display the names of files in the current directory that begin with 'a' or 'b', which command would you use?
+Answer: ls [ab]*
+
+How do you display the second to last line of a file 'diary.txt'?
+Answer: tail -2 diary.txt | head -1
+
+To display a list of all users currently logged in and then sort this list alphabetically, which combination of commands would you use?
+Answer: who | sort
+
+How can you list all files in the current directory that have been modified within the last 10 days?
+Answer: find . -type f -mtime -10
+
+What command would you use to sort the contents of 'data.txt' in reverse alphabetical order?
+Answer: sort -r data.txt
+
+How do you display the size of each file and directory in the current directory in a human-readable format?
+Answer: du -sh *
+
+To count the number of lines in all '.log' files in the current directory, which command would you use?
+Answer: wc -l *.log
+
+How can you display the current directory path?
+Answer: pwd
+
+If you need to replace every occurrence of 'old' with 'new' in 'file.txt', which command would you use?
+Answer: sed 's/old/new/g' file.txt
+
+How would you list all files in the current directory and its subdirectories?
+Answer: find . -type f
+
+What command can be used to display the first 10 lines of each file in the current directory?
+Answer: head -10 *
+
+To list all users who are currently logged in and display the number of times each user is logged in, what command would you use?
+Answer: who | cut -d ' ' -f 1 | sort | uniq -c
+
+How do you display the ten most frequently used words in 'text.txt'?
+Answer: cat text.txt | tr -s ' ' '\n' | sort | uniq -c | sort -nr | head -10
+
+If you want to find files in your home directory larger than 100MB, which command would you use?
+Answer: find ~/ -type f -size +100M
+
+How can you recursively remove all '.tmp' files in the current directory and its subdirectories?
+Answer: find . -type f -name '*.tmp' -delete
+
+To display the disk usage of the current directory including its subdirectories, what command would you use?
+Answer: du -h
+
+How would you display the last modified date and time of each file in the current directory?
+Answer: ls -lt
+
+If you want to find and display all empty files in the current directory, which command would you use?
+Answer: find . -type f -empty
+
+How do you count the number of unique IP addresses in a file named 'access.log'?
+Answer: cut -d ' ' -f 1 access.log | sort | uniq | wc -l
+
+To display the contents of 'file.txt' with all occurrences of 'apple' replaced with 'orange', what command would you use?
+Answer: sed 's/apple/orange/g' file.txt
+
+How would you list the ten largest files in the current directory?
+Answer: ls -lS | head -10
+
+If you need to display all lines from 'file.txt' that start with a number, which command would you use?
+Answer: grep '^[0-9]' file.txt
+
+How can you find the total number of lines that contain the word 'error' across all '.log' files in the current directory?
+Answer: grep -c 'error' *.log | awk -F: '{sum += $2} END {print sum}'
+
+These questions are designed to test the application of UNIX commands in various file and directory management scenarios.
+
+
+
+
+
+
+
+
+
+

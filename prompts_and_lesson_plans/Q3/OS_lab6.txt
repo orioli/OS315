@@ -1,0 +1,121 @@
+ 
+ITBP 315 – Operating Systems Fundamentals
+Lab 6 – Scripting
+Objective: 
+Unix scripting
+
+
+1  write Hello World on the screen
+echo “Hello world”
+
+2 Writing your first script and getting it to work, echo “Hello world”
+
+To successfully write a shell script, you have to do three things:
+	1.	Write a script
+	2.	Give the shell permission to execute it
+	3.	Put it somewhere the shell can find it
+
+Example 1:
+	Create a text file ‘my_script’:
+	cat > my_script.sh ( or nano my_script.sh) 
+	#!/bin/bash
+	# My first script
+	echo "Hello World!"
+
+Now,
+•	Press Enter
+•	Press ctrl +d
+•	bash my_script.sh
+
+OR 
+
+•	Make the file executable by
+Chmod  +x  my_script
+•	Execute the file: (dot slash my_script)
+./my_script
+
+
+Example2:
+	cat > test.sh
+	#!/bin/bash
+	date
+	ls
+	chmod +x test.sh
+	./test.sh
+
+Example 3:
+	nano add.sh
+
+#!/bin/bash
+
+# Add two numeric value
+((sum=25+35))
+
+#Print the result
+echo $sum
+	Ctrl X ->  y  ->  enter
+	bash add.sh
+
+
+Example 4:
+
+	nano name.sh
+
+
+#!/bin/bash
+echo "Enter Your Name"
+read name
+echo "Welcome $name to Lubuntu"
+	Ctrl X ->  y  ->  enter
+	bash name.sh
+
+
+
+
+Single Quote and Double Quote Inside Shell Script
+Following example displays an echo statement without any special character.
+
+$ echo The Geek Stuff
+The Geek Stuff
+
+
+Echo statement with a special character ;     semi-colon is a command terminator in bash. In the following example, “The Geek” works for the echo and “Stuff” is treated as a separate Linux command and gives command not found.
+$ echo The Geek; Stuff
+The Geek
+-bash: Stuff: command not found
+
+
+To avoid this you can add a \ in front of semi-colon, which will remove the special meaning of semi-colon and just print it as shown below.
+$ echo The Geek\; Stuff
+The Geek; Stuff
+
+
+Single Quote
+Use single quote when you want to literally print everything inside the single quote. Even the special variables such as $HOSTNAME will be print as $HOSTNAME instead of printing the name of the Linux host.
+$ echo 'Hostname=$(hostname) ;  Current User=`whoami` '
+
+Hostname=$(hostname) ;  Current User=`whoami` 
+
+
+Double Quote
+Use double quotes when you want to display the real meaning of special variables.
+$ echo "Hostname=$(hostname) ;  Current User=`whoami`"
+
+Hostname=ubuntu ;  Current User=user 
+
+Home work ideas
+write a script that counts howmany folders (recursively) youhave ina givene folderr
+
+write a script that counts howmany how many txt files exist in a given folder
+
+write a script that counts howmany how many files exist in a given folder that contain at least the leter "e" in the filename 
+
+write a scipt that wirte the following message HELLO WORD , but waits 1 second before it prints the next letter.... start by H
+
+wrtie a script that counts... in the last 1000 history coommand, how many times did you wride cd and how manytimes did you write nano ?
+
+
+
+
+
+

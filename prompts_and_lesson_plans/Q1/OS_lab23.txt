@@ -1,0 +1,302 @@
+ 
+ CSBP 315 – Operating System Fundamentals
+Lab 2 – Basic Unix Commands Part 1
+
+Objective:
+Practice common UNIX commands.
+
+Procedure:
+
+1.	Open your Unix shell and try these commands:
+	Change your password
+v	passwd
+
+	Date Commands
+date		Gives time and date	
+Example: date
+
+cal		Calendar
+Examples: 
+cal 3 1997
+cal 1997
+cal 3
+cal 7 1962
+
+	You and the System
+uptime		Machine’s ‘up’ time
+hostname		Name of the machine
+whoami		Your name (short form)
+who am I		 (long form with pseudo terminal)
+w			what is everyone doing? (Pseudo and text terminals)
+
+UNIX Help 
+man cat
+man man
+ 
+
+2.	Listing files and directories
+
+ls (list)
+When you first login, your current working directory is your home directory. Your home directory has the same name as your user-name, for example, user, and it is where your personal files and subdirectories are saved.
+
+To find out what is in your home directory, type 
+
+$ ls 
+The ls command ( lowercase L and lowercase S ) lists the contents of your current working directory.
+ls does not, in fact, cause all the files in your home directory to be listed, but only those ones whose name does not begin with a dot (.) Files beginning with a dot (.) are known as hidden files and usually contain important program configuration information. They are hidden because you should not change them unless you are very familiar with UNIX!!! 
+
+To list all files in your home directory including those whose names begin with a dot, type
+
+$ ls -a
+ As you can see, ls -a lists files that are normally hidden.
+ls is an example of a command which can take options: -a is an example of an option. The options change the behaviour of the command.
+
+3.	 Making Directories
+
+mkdir (make directory)
+To make a subdirectory called unixstuff in your current working directory type 
+
+$ mkdir unixstuff 
+
+$ ls
+To see the directory you have just created, type 
+
+4.	Changing to a different directory
+
+cd (change directory)
+ The command cd directory means change the current working directory to 'directory'. The current working directory may be thought of as the directory you are in, i.e. your current position in the file-system tree. 
+
+To change to the directory you have just made, type 
+
+$ cd unixstuff 
+
+Type ls to see the contents (which should be empty)
+
+Exercise 1a
+ 
+Make another directory inside the unixstuff directory called backups 
+
+
+5.	 The directories . and .. 
+
+Still in the unixstuff directory, type 
+
+$ ls -a 
+As you can see, in the unixstuff directory (and in all other directories), there are two special directories called (.) and (..)
+ 
+The current directory (.) 
+
+In UNIX, (.) means the current directory, so typing 
+
+$ cd . 
+NOTE: there is a space between cd and the dot
+ 
+means stay where you are (the unixstuff directory). 
+
+This may not seem very useful at first, but using (.) as the name of the current directory will save a lot of typing, as we shall see later in the tutorial. 
+
+The parent directory (..) 
+
+(..) means the parent of the current directory, so typing 
+
+$ cd ..  will take you one directory up the hierarchy (back to your home directory). Try it.
+
+Note: typing cd with no argument always returns you to your home directory. This is very useful if you are lost in the file system.
+
+
+
+6.	 Pathnames 
+pwd (print working directory) 
+
+Pathnames enable you to work out where you are in relation to the whole file-system. For example, to find out the absolute pathname of your home-directory, type cd to get back to your home-directory and then type 
+
+$ pwd 
+The full pathname will look something like this - 
+
+/home/user
+ 
+which means that user (your home directory) is in the home sub-directory, which is in the top-level root directory called " / " .
+
+
+Exercise 1
+ 
+Use the commands cd, ls and pwd to explore the file system. 
+
+(Remember, if you get lost, type cd by itself to return to your home-directory)
+
+
+7.	 More about home directories and pathnames
+
+Understanding pathnames
+ 
+First type cd to get back to your home-directory, then type
+ 
+$ ls unixstuff
+ 
+to list the conents of your unixstuff directory.
+ 
+Now type 
+
+$ ls backups
+ You will get a message like this - 
+backups: No such file or directory 
+
+The reason is, backups is not in your current working directory. To use a command on a file (or directory) not in the current working directory (the directory you are currently in), you must either cd to the correct directory, or specify its full pathname. To list the contents of your backups directory, you must type 
+
+$ ls unixstuff/backups
+
+
+~ (your home directory)
+Home directories can also be referred to by the tilde ~ character. It can be used to specify paths starting at your home directory. So typing 
+
+$ ls ~/unixstuff
+ 
+will list the contents of your unixstuff directory, no matter where you currently are in the file system. 
+
+What do you think 
+
+$ ls ~
+ 
+would list? 
+
+What do you think 
+
+$ ls ~/.. 
+
+would list?
+
+
+
+
+
+Summary
+
+
+ 
+
+Source: http://www.ee.surrey.ac.uk/Teaching/Unix/index.html
+
+
+CSBP 315 – Operating Systems Fundamentals
+Lab 3 – Basic Unix Commands Part 2
+Objective:
+Practice common UNIX commands.
+
+Procedure:
+1.	Open your Unix shell and try these commands:
+	Create a new file and add some text in it
+v	cat > filename
+
+	View a file 
+v	cat /etc/passwd
+v	more /etc/passwd
+v	more filename 
+
+	Copy file1, making file2 
+v	cp file1 file2	
+
+	Rename file1 as file2 
+mv file1 file2
+
+	Delete file1 as file2
+rm  file			Delete file
+rm -i file	   		Double-check first
+
+	Counts the lines, words, characters in file
+wc  file		
+	Output can be redirected to a file with’>’
+ls > dir.txt
+cal 2020 > year2020
+cal 2 2020 > Feb2020
+
+
+	Output can be appended to a file with ‘>>‘
+cat file1 >> file2
+
+	Concatenate two files
+cat f1 f2 > fs
+
+
+
+
+
+Tutorial 1 (Using cp command):
+
+cp file1 file2 is the command which makes a copy of file1 in the current working directory and calls it file2 
+
+What we are going to do now, is to take a file stored in an open access area of the file system, and use the cp command to copy it to your ‘Lab2’ directory. 
+
+First, cd to your ‘Lab2’ directory.
+ 
+% cd  /Lab2 
+Then at the UNIX prompt, type, 
+
+% cp /home/Admin/Desktop/Text.doc . 
+
+Note: Don't forget the dot . at the end. Remember, in UNIX, the dot means the current directory.
+ 
+The above command means copy the file science.txt to the current directory, keeping the name the same.
+
+Task :
+1.	Create  two directories in your home directory  with  name D1 and D2
+2.	Create a text file by using a text editor  and save it  by name file1(  By default file will be saved in  your home directory.
+3.	Using the information given in the above tutorial and using cp command make the file1  available in D1 and D2.
+
+
+Tutorial 2 (Using mv command):
+mv (move)
+ 
+mv file1 file2 moves (or renames) file1 to file2 
+
+To move a file from one place to another, use the mv command. This has the effect of moving rather than copying the file, so you end up with only one file rather than two. 
+
+It can also be used to rename a file, by moving the file to the same directory, but giving it a different name. 
+
+We are now going to move the file file1.txt to your Ex1 directory. 
+
+First, change directories to your D2 directory (can you remember how?). Then, inside the D2 directory, type
+ 
+% mv file1.txt Ex1/.
+ 
+Type ls and ls Ex1 to see if it has worked.
+
+
+
+Tutorial 3:
+rm (remove), rmdir (remove directory)
+ 
+To delete (remove) a file, use the rm command. As an example, we are going to create a copy of the science.txt file then delete it. 
+
+Inside your Lab2 directory, type
+ 
+% cp Text.doc tempfile.txt
+ % ls
+ % rm tempfile.txt 
+% ls
+ 
+You can use the rmdir command to remove a directory (make sure it is empty first). Try to remove the backups directory. You will not be able to since UNIX will not let you remove a non-empty directory.
+
+Task
+Create a directory called tempstuff using mkdir , then remove it using the rmdir command.
+
+
+clear (clear screen)
+ 
+Before you start the next section, you may like to clear the terminal window of the previous commands so the output of the following commands can be clearly understood. 
+
+At the prompt, type 
+
+% clear 
+
+This will clear all text and leave you with the % prompt at the top of the window.
+
+cat 
+ 
+The command cat can be used to display the contents of a file on the screen. Type: 
+
+% cat file1.txt
+
+
+
+
+Source: http://www.ee.surrey.ac.uk/Teaching/Unix/index.html
