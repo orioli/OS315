@@ -11,8 +11,8 @@
 
 ## Q2
 - GTP:
-- urlb https://chat.openai.com/g/g-tWCOReUO6-os315q2plain
-- urlb https://chat.openai.com/g/g-yKTJKRyDZ-os315q2emoji
+-- urlb https://chat.openai.com/g/g-tWCOReUO6-os315q2plain
+-- urlb https://chat.openai.com/g/g-yKTJKRyDZ-os315q2emoji
 - Lesson plan: redirect, wc, grep (OS_lab45.txt)
 - Dates: Feb 5-8
 
