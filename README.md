@@ -29,6 +29,6 @@ Lesson plan: Q&A style chatbot for CS50 [cs50]
 Dates: Feb 16-20
 
 
-urla.	https://github.com/orioli/OS101tutor/
-urlb.	https://chat.openai.com/g/
-c.	Requires subscription
+- urla.	https://github.com/orioli/OS101tutor/
+- urlb.	https://chat.openai.com/g/
+- c.	Requires subscription
