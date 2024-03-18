@@ -1,7 +1,7 @@
 # OS315 chatbot
 
 ## Q1	
-- GTP: 	https://chat.openai.com/g/g-NRNKFMJR4-os315 c
+- GTP: 	https://chat.openai.com/g/g-NRNKFMJR4-os315
 - Prompt: see Fig 1
 - Lesson plan: basic unix commands cd, ls,  (OS_lab23.txt)
 - Dates: Feb 2-5
