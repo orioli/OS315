@@ -11,7 +11,6 @@ Q1
 Q2
 - Url: 	urla +/Q2.html
 - GTP:
-
 - urlb +/g-tWCOReUO6-os315q2plain
 - 	urlb +/g-yKTJKRyDZ-os315q2emoji
 - Prompt: see Fig 1
