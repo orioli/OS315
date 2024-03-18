@@ -1,5 +1,8 @@
 # OS315 chatbot
 
+![Alt text](./chatbot_config_flow.png "Optional title")
+
+
 ## Q1	
 - GTP: 	https://chat.openai.com/g/g-NRNKFMJR4-os315
 - Prompt: see Fig 1
