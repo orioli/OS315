@@ -25,3 +25,7 @@
 - Prompt: N/A
 - Lesson plan: Q&A style chatbot for CS50 [cs50]
 - Dates: Feb 16-20
+
+## How to deploy flowise on render
+- https://www.youtube.com/watch?v=Fxyc6-frgrI
+
